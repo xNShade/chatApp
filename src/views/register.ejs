@@ -1,0 +1,44 @@
+<!-- TODO: Set up input requirements for student ID, Add checkbox for status. -->
+<%- include("header") -%>
+<h2>Register Page</h2>
+<div class="container-fluid">
+<form class="form-horizontal" action="register" method="post">
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="control-label" for="uname">Username </label>
+      <input type="text" class="form-control" name="uname" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="control-label" for="upass">Password </label>
+      <input type="password" name="upass" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="control-label" for="studname">First and Last Name </label>
+      <input type="text" name="studname" class="form-control" placeholder="Firstname Lastname" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <label class="control-label" for="studid">Student ID </label>
+      <input type="text" name="studid" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <input type="radio" name="userstatus" value="teacher" required>Teacher
+      <input type="radio" name="userstatus" value="student" checked>Student
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <button class="btn" type="submit" name="registerbutton">Register</button>
+    </div>
+  </div>
+</form>
+</div>
+
+<%- include("footer") -%>

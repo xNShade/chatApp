@@ -1,0 +1,30 @@
+<%- include("header") -%>
+<script>
+  $(function () {
+    var socket = io();
+    var alias = "<%= myuser %>";
+    var room = "<%= classname %>";
+    var username = "<%= username %>";
+    var status = "<%= userstatus %>";
+    socket.emit('joinroom', room, username, alias, status);
+    $('form').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('sendchat', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('sendchat', function(thisname, msg){
+      $('#messages').append($('<li>').text(thisname + ": " + msg));
+    });
+  });
+</script>
+
+<h2><%= classname %> Chat Page</h2>
+<div class="container-fluid">
+  <ul id="messages"></ul>
+  <form class="chatform" action="">
+    <input class="chatinput" id="m" autocomplete="off" /><button class="btn" type="submit" name="button">Send</button>
+  </form>
+</div>
+
+<%- include("footer") -%>
